@@ -33,4 +33,4 @@ jobs:
         source emsdk/emsdk_env.sh
         emcmake cmake . -DCMAKE_BUILD_TYPE=Release
         cmake --build . --target Luau.LuauCeption.Compiler Luau.LuauCeption.VM Luau.LuauCeption.Full --config Release -j 2
-        sh ../utils/Convert.sh
+        sh ./utils/Convert.sh
