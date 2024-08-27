@@ -27,7 +27,10 @@ jobs:
         ./emsdk install latest
         ./emsdk activate latest
     - name: Add Wasynth
-      run: curl -L -o ./utils/wasm2luau https://github.com/Rerumu/Wasynth/releases/latest/download/wasm2luau
+      run: |
+        curl -L -o ./utils/wasm2luau https://github.com/Rerumu/Wasynth/releases/latest/download/wasm2luau
+        chmod +x ./utils/wasm2luau
+        ls -la "./utils"
     - name: Checkout submodules
       run: git submodule update --init --recursive
     - name: make
