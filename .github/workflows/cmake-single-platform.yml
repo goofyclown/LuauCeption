@@ -26,6 +26,8 @@ jobs:
         cd emsdk
         ./emsdk install latest
         ./emsdk activate latest
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - name: make
       run: |
         source emsdk/emsdk_env.sh
