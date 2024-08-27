@@ -16,8 +16,6 @@ jobs:
   web:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout submodules
-      run: git submodule update --init --recursive
     - uses: actions/checkout@v1
     - uses: actions/checkout@v2
       with:
@@ -28,6 +26,8 @@ jobs:
         cd emsdk
         ./emsdk install latest
         ./emsdk activate latest
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - name: make
       run: |
         source emsdk/emsdk_env.sh
