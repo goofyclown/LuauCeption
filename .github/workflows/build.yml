@@ -34,7 +34,7 @@ jobs:
       uses: actions-rs/cargo@v1
       with:
         command: build
-        args: --target x86_64-unknown-linux-gnu --bin wasm2luajit --bin wasm2luau --release
+        args: --target x86_64-unknown-linux-gnu --bin wasm2luajit --bin wasm2luau --release --manifes-path ./Wasynth/Cargo.toml
         
 
     - uses: actions/checkout@v4
