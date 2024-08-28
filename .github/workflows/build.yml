@@ -45,22 +45,13 @@ jobs:
         ./wasm2luau Luau.LuauCeption.VM.wasm > Luau.LuauCeption.VM.luau
         ./wasm2luau Luau.LuauCeption.Full.wasm > Luau.LuauCeption.Full.luau
 
-# find how to upload 3 files at same time
-    - name: Upload compiler
+
+    - name: Upload files
       uses: actions/upload-artifact@v4
       with:
-        name: Luau.LuauCeption.Compiler.luau
-        path: ./Luau.LuauCeption.Compiler.luau
-        overwrite: true
-    - name: Upload VM
-      uses: actions/upload-artifact@v4
-      with:
-        name: Luau.LuauCeption.VM.luau
-        path: ./Luau.LuauCeption.VM.luau
-        overwrite: true
-    - name: Upload Full
-      uses: actions/upload-artifact@v4
-      with:
-        name: Luau.LuauCeption.Full.luau
-        path: ./Luau.LuauCeption.Full.luau
+        name: Luau.LuauCeption
+        path: |
+          ./Luau.LuauCeption.Compiler.luau
+          ./Luau.LuauCeption.VM.luau
+          ./Luau.LuauCeption.Full.luau
         overwrite: true
