@@ -16,11 +16,14 @@ jobs:
   web:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
       with:
-        repository: emscripten-core/emsdk
-        path: emsdk
+        toolchain: stable
+        profile: minimal
+        target: x86_64-unknown-linux-gnu
+        
+    - uses: actions/checkout@v3
+    
     - name: emsdk install
       run: |
         cd emsdk
