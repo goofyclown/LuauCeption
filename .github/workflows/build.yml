@@ -26,13 +26,32 @@ jobs:
         cd emsdk
         ./emsdk install latest
         ./emsdk activate latest
-    - name: Add Wasynth
+
+
+    - name: "[Wasynth] Download"
       run: |
-        curl -L -o ./wasm2luau https://github.com/Rerumu/Wasynth/releases/latest/download/wasm2luau
-        chmod +x ./wasm2luau
-        ls -la "./"
+        git clone https://github.com/Rerumu/Wasynth.git Wasynth
+        cd Wasynth
+    - name: "[Wasynth] Toolchain"
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        target: x86_64-unknown-linux-gnu
+
+    - uses: Swatinem/rust-cache@v1
+
+    - name: "[Wasynth] Build"
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+        args: --target x86_64-unknown-linux-gnu --bin wasm2luajit --bin wasm2luau --release
+
+
     - name: Checkout submodules
-      run: git submodule update --init --recursive
+      run: |
+        cd ../
+        git submodule update --init --recursive
     - name: make
       run: |
         source emsdk/emsdk_env.sh
