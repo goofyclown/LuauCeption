@@ -34,7 +34,8 @@ jobs:
       uses: actions-rs/cargo@v1
       with:
         command: build
-        args: --target x86_64-unknown-linux-gnu --bin wasm2luajit --bin wasm2luau --release --manifest-path ./Wasynth/Cargo.toml
+        args: --target x86_64-unknown-linux-gnu --bin wasm2luau --release --manifest-path ./Wasynth/Cargo.toml
+    - run: mv ./Wasynth/target/release/wasm2luau ./
         
 
     - uses: actions/checkout@v4
@@ -47,11 +48,11 @@ jobs:
         cd emsdk
         ./emsdk install latest
         ./emsdk activate latest
-    - name: Add Wasynth
-      run: |
-        curl -L -o ./wasm2luau https://github.com/Rerumu/Wasynth/releases/latest/download/wasm2luau
-        chmod +x ./wasm2luau
-        ls -la "./"
+#    - name: Add Wasynth
+#      run: |
+#        curl -L -o ./wasm2luau https://github.com/Rerumu/Wasynth/releases/latest/download/wasm2luau
+#        chmod +x ./wasm2luau
+#        ls -la "./"
     - name: Checkout submodules
       run: git submodule update --init --recursive
     - name: make
