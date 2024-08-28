@@ -16,13 +16,31 @@ jobs:
   web:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+    
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
         profile: minimal
         target: x86_64-unknown-linux-gnu
+    - uses: Swatinem/rust-cache@v1
+
+    - uses: actions/checkout@v4
+      with:
+        repository: Rerumu/Wasynth
+        path: Wasynth
+
+    - name: Build Wasynth
+      uses: actions-rs/cargo@v1
+      with:
+        command: build
+        args: --target x86_64-unknown-linux-gnu --bin wasm2luajit --bin wasm2luau --release
         
-    - uses: actions/checkout@v3
+
+    - uses: actions/checkout@v4
+      with:
+        repository: emscripten-core/emsdk
+        path: emsdk
     
     - name: emsdk install
       run: |
