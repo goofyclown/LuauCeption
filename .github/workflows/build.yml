@@ -34,8 +34,8 @@ jobs:
       uses: actions-rs/cargo@v1
       with:
         command: build
-        args: --target x86_64-unknown-linux-gnu --bin wasm2luau --release --manifest-path ./Wasynth/Cargo.toml
-    - run: mv ./Wasynth/target/release/wasm2luau ./
+        args: --target x86_64-unknown-linux-gnu --bin wasm2luau --release --manifest-path ./Wasynth/codegen/luau/Cargo.toml
+    - run: mv ./Wasynth/target/x86_64-unknown-linux-gnu/release/wasm2luau ./
         
 
     - uses: actions/checkout@v4
