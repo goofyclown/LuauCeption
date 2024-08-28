@@ -1,6 +1,6 @@
 # This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
-name: CMake on a single platform
+name: build
 
 on:
   push:
@@ -44,3 +44,23 @@ jobs:
         ./wasm2luau Luau.LuauCeption.Compiler.wasm > Luau.LuauCeption.Compiler.luau
         ./wasm2luau Luau.LuauCeption.VM.wasm > Luau.LuauCeption.VM.luau
         ./wasm2luau Luau.LuauCeption.Full.wasm > Luau.LuauCeption.Full.luau
+
+# find how to upload 3 files at same time
+    - name: Upload compiler
+      uses: actions/upload-artifact@v4
+      with:
+        name: Luau.LuauCeption.Compiler.luau
+        path: ./Luau.LuauCeption.Compiler.luau
+        overwrite: true
+    - name: Upload VM
+      uses: actions/upload-artifact@v4
+      with:
+        name: Luau.LuauCeption.VM.luau
+        path: ./Luau.LuauCeption.VM.luau
+        overwrite: true
+    - name: Upload Full
+      uses: actions/upload-artifact@v4
+      with:
+        name: Luau.LuauCeption.Full.luau
+        path: ./Luau.LuauCeption.Full.luau
+        overwrite: true
