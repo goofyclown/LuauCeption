@@ -22,7 +22,9 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Clone Wasynth
-      run: git clone https://github.com/Rerumu/Wasynth.git Wasynth
+      run: |
+        git clone https://github.com/Rerumu/Wasynth.git Wasynth
+        ls  -la "./Wasynth"
 
     - name: Toolchain
       uses: actions-rs/toolchain@v1
