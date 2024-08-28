@@ -76,4 +76,5 @@ jobs:
           ./Luau.LuauCeption.Compiler.luau
           ./Luau.LuauCeption.VM.luau
           ./Luau.LuauCeption.Full.luau
+          ./Luau.LuauCeption.Compiler.wasm
         overwrite: true
