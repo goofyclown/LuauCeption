@@ -58,7 +58,7 @@ jobs:
     - name: make
       run: |
         source emsdk/emsdk_env.sh
-        emcmake cmake . -DCMAKE_BUILD_TYPE=RelWithDebInfo \ -DCMAKE_C_FLAGS="-O3 --closure 1 -s NO_EXIT_RUNTIME=1 -s ENVIRONMENT='web,worker' -s ASSERTIONS=1 -s EXPORTED_FUNCTIONS='[\"__cxa_throw\", \"_emscripten_memcpy_js\", \"emscripten_resize_heap\"]'" \ -DCMAKE_CXX_FLAGS="-O3 --closure 1 -s NO_EXIT_RUNTIME=1 -s ENVIRONMENT='web,worker' -s ASSERTIONS=1 -s EXPORTED_FUNCTIONS='[\"__cxa_throw\", \"_emscripten_memcpy_js\", \"emscripten_resize_heap\"]'"
+        emcmake cmake . -DCMAKE_BUILD_TYPE=RelWithDebInfo
         cmake --build . --target Luau.LuauCeption.Compiler Luau.LuauCeption.VM Luau.LuauCeption.Full --config RelWithDebInfo -j 2
         ls -la "./"
 
