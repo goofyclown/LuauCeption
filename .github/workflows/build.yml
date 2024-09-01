@@ -59,7 +59,6 @@ jobs:
       run: |
         source emsdk/emsdk_env.sh
         emcmake cmake . -DCMAKE_BUILD_TYPE=RelWithDebInfo
-        make -j2 Luau.Web
         cmake --build . --target Luau.LuauCeption.Compiler Luau.LuauCeption.VM Luau.LuauCeption.Full --config RelWithDebInfo -j 2
         ls -la "./"
 
